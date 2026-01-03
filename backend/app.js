@@ -98,7 +98,7 @@ app.post('/startServerGame', async (req, res) => {
         console.log("1");
         let outputCommandCheck = await runCommand("screen -ls")
         console.log("2");
-        if (outputCommandCheck.includes(nameScreen)) {
+        if (outputCommandCheck.data.includes(nameScreen)) {
             console.log("3");
             outputCommand.success = false;
             outputCommand.data = ""
