@@ -30,7 +30,7 @@ const serverGame = [
     },
     {
         'nameServerGame': 'Ark_Gen2',
-        'commandRun': `screen -dmS arkserverGen2 bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay`
+        'commandRun': `screen -dmS arkserverGen2 bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
     }
 ]
 
