@@ -95,13 +95,17 @@ app.post('/startServerGame', async (req, res) => {
     try {
 
         // je verif que le serveur n'est pas deja lancé:
+        console.log("1");
         let outputCommandCheck = await runCommand("screen -ls")
+        console.log("2");
         if (outputCommandCheck.includes(nameScreen)) {
+            console.log("3");
             outputCommand.success = false;
             outputCommand.data = ""
             outputCommand.message = "Le serveur est déjà lancé !"
             
         } else {
+            console.log("4");
             outputCommand = await runCommand(commandRun);
             outputCommand.message = "Serveur lancé !";
         }
