@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #e5e7eb;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.listServerGame {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.blockGame {
+    background-color: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    width: 600px;
+}
+
+.blockTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.blockTitle h2 {
+    font-size: 1.6rem;
+}
+
+.blockIcon {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.serverGame {
+    margin-top: 15px;
+}
+
+.serverGameItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #020617;
+    padding: 15px 20px;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.serverGameItem:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.serverGameItem h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+button {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #020617;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px;
+    }
+
+    .serverGameItem {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100%;
+        text-align: center;
+    }
+}
