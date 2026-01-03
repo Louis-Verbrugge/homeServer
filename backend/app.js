@@ -26,11 +26,13 @@ app.use(express.json());
 const serverGame = [
     {
         'nameServerGame': 'Ark_Fjordur',
-        'commandRun': `screen -dmS arkserverFjordur bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Fjordur?Port=7777?QueryPort=27015?SessionName=Cluster_Fjordur" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
+        'nameScreen': 'arkserverFjordur',
+        'commandRun': `screen -dmS ${nameScreen} bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Fjordur?Port=7777?QueryPort=27015?SessionName=Cluster_Fjordur" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
     },
     {
         'nameServerGame': 'Ark_Gen2',
-        'commandRun': `screen -dmS arkserverGen2 bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
+        'nameScreen': 'arkserverGen2',
+        'commandRun': `screen -dmS ${nameScreen} bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
     }
 ]
 
@@ -72,8 +74,12 @@ app.post('/startServerGame', async (req, res) => {
     let nameServer = req.body.nameServerGame
 
     let commandRun = "";
+    let nameScreen = "";
     serverGame.forEach(element => {
-        if (element.nameServerGame === nameServer) commandRun = element.commandRun;
+        if (element.nameServerGame === nameServer) {
+            commandRun = element.commandRun;
+            nameScreen = element.nameScreen;
+        }
     });
 
     if (commandRun === "") {
@@ -87,6 +93,16 @@ app.post('/startServerGame', async (req, res) => {
 
     let outputCommand = { success: null, data: null, message: "" }
     try {
+
+        // je verif que le serveur n'est pas deja lancé:
+        let outputCommandCheck = await runCommand("screen -ls")
+        if (outputCommandCheck.includes("nameScreen")) {
+            outputCommand.success = false;
+            outputCommand.data = ""
+            outputCommand.message = "Le serveur est déjà lancé !"
+            throw new Error("Le serveur est déjà lancé !")
+        }
+
         outputCommand = await runCommand(commandRun);
         outputCommand.message = "Serveur lancé !";
     }
