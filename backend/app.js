@@ -27,12 +27,12 @@ const serverGame = [
     {
         'nameServerGame': 'Ark_Fjordur',
         'nameScreen': 'arkserverFjordur',
-        'commandRun': `screen -dmS ${nameScreen} bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Fjordur?Port=7777?QueryPort=27015?SessionName=Cluster_Fjordur" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
+        'commandRun': `screen -dmS arkserverFjordur bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Fjordur?Port=7777?QueryPort=27015?SessionName=Cluster_Fjordur" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
     },
     {
         'nameServerGame': 'Ark_Gen2',
         'nameScreen': 'arkserverGen2',
-        'commandRun': `screen -dmS ${nameScreen} bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
+        'commandRun': `screen -dmS arkserverGen2 bash -c 'cd /home/steam/ARK_server/ShooterGame/Binaries/Linux && ./ShooterGameServer "Gen2?Port=7779?QueryPort=27017?SessionName=Cluster_Gen2" -server -log -clusterid=MonCluster -NoBattlEye -crossplay'`
     }
 ]
 
