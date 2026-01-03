@@ -100,11 +100,12 @@ app.post('/startServerGame', async (req, res) => {
             outputCommand.success = false;
             outputCommand.data = ""
             outputCommand.message = "Le serveur est déjà lancé !"
-            throw new Error("Le serveur est déjà lancé !")
+            
+        } else {
+            outputCommand = await runCommand(commandRun);
+            outputCommand.message = "Serveur lancé !";
         }
 
-        outputCommand = await runCommand(commandRun);
-        outputCommand.message = "Serveur lancé !";
     }
     catch {
         outputCommand.success = false;
